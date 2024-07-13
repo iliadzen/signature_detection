@@ -1,30 +1,14 @@
-# signature_detection
 ## Summary
-Model for determining the presence of a signature on a fragment of a document. This fragment can be found near common words (such as *Sincerely, Yours* and etc.), whose position can determined by OCR methods (open source Tesseract for example).
+This repository contains a model designed to determine the signature presence on a document.
+
 ## Dataset
-To train model Tobacco 800 dataset was used: http://tc11.cvc.uab.es/datasets/Tobacco800_1
+The model was trained using the Tobacco 800 dataset, available at [Tobacco 800 Dataset](http://tc11.cvc.uab.es/datasets/Tobacco800_1).  
+This dataset consists of documents in TIFF format, with signature positions marked in XML files.
 
-The dataset contains documents in tif format with marked signatures positions in XML files.
-Extracting signatures (class 1) fragments and sampling fragments without signatures (class 0) are in *data_preparation.ipynb*.
+## Classification
+The process of extracting signature fragments (class 1) and sampling non-signature fragments (class 0) is detailed in `data_preparation.ipynb`.
 
-
-## Model description
-For the test simple 3 CNN (32, 32 and 64 neurons) and 1 FC (64 neurons) layer model was used. And it gives very good and enough results without any improvements:  
-
-**Binary accuracy**:  
-On validation: 99%  
-On test: 100%
-
-## Usage
-Pretrained model is *model_v1.h5*  
-Input image shape: (150, 150, 3)
-1) Load model:  
-model = keras.models.load_model('path_to_model/model_v1.h5')
-2) Load image:   
-img = PIL.Image.open('path_to_image')
-3) Resize image:  
-img = img.resize((150, 150), Image.ANTIALIAS)  
-img = np.expand_dims(np.asarray(img), axis=0)
-4) Make prediction (returns probability):  
-model.predict(img)[0][0]
-
+## Model Description
+The model architecture includes three convolutional layers with 32, 32, and 64 neurons respectively, followed by a fully connected layer with 64 neurons.
+This simple configuration could achieved excellent results:
+- Binary Accuracy: 99.9% on test and 99..8% on validation
