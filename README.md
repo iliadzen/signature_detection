@@ -11,4 +11,4 @@ The process of extracting signature fragments (class 1) and sampling non-signatu
 ## Model Description
 The model architecture includes three convolutional layers with 32, 32, and 64 neurons respectively, followed by a fully connected layer with 64 neurons.
 This simple configuration could achieved excellent results:
-- Binary Accuracy: 99.9% on test and 99..8% on validation
+- Binary Accuracy: 99.9% on test and 99.8% on validation
